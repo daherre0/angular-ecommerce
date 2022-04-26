@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ProductModel } from 'src/app/models/product.model';
+import { EcommerceService } from 'src/app/services/EcommerceService.service';
 import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -10,17 +13,11 @@ import Swal from 'sweetalert2';
   ]
 })
 export class RegisterProductsComponent implements OnInit {
-  product = {
-    title: 'title',
-    description: 'desc',
-    price: '10.000',
-    discount: '2.500',
-    startDate: '',
-    finalDate: '',
-    image: ''
-  }
+  product: ProductModel = new ProductModel();
 
-  constructor() { }
+  constructor( private ecommerce: EcommerceService ) {
+    this.ecommerce.getProducts()
+  }
 
   ngOnInit(): void {
   }
@@ -32,19 +29,23 @@ export class RegisterProductsComponent implements OnInit {
       })
       return
     }
-    this.validateDate(this.product.startDate, this.product.finalDate)
+    this.validateDate(form.value.startDate, form.value.finalDate)
     console.log(form.value)
+
+    this.ecommerce.createProducts(this.product)
+      .subscribe(resp => {
+        console.log(resp)
+      })
   }
 
   validateDate(fisrtDate: any, secondDate:any) {
-    fisrtDate = new Date(fisrtDate);
-    secondDate = new Date(secondDate);
     if(fisrtDate > secondDate) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'La fecha final no puede ser menor que la final.',
       })
+      return
     }
   }
 
