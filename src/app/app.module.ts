@@ -11,6 +11,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { RegisterProductsComponent } from './pages/register-products/register-products.component';
 import { FormsModule } from '@angular/forms';
 import { EcommerceService } from './services/EcommerceService.service';
+import { TableProductsComponent } from './pages/table-products/table-products.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { EcommerceService } from './services/EcommerceService.service';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    RegisterProductsComponent
+    RegisterProductsComponent,
+    TableProductsComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
