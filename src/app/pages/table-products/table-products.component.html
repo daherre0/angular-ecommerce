@@ -1,0 +1,51 @@
+<h2>Lista de productos</h2>
+<hr>
+<div class="row">
+  <div class="col">
+    <input #producto type="text"
+      class="form-control"
+      placeholder="Buscar producto..."
+      [(ngModel)]="filterProduct"
+      name="filterProduct"
+      >
+  </div>
+</div>
+<br>
+<a class="btn btn-primary" routerLink="/register-products/nuevo">Agregar nuevo producto</a>
+
+<table class="table table-bordered mt-5">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Descuento</th>
+      <th scope="col">Fecha inicial</th>
+      <th scope="col">Fecha final</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products | filter: filterProduct ; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td width="70">{{ product.title }}</td>
+      <td width="70">{{ product.description }}</td>
+      <td>{{ product.image }}</td>
+      <td>{{ product.unitValue }}</td>
+      <td>{{ product.discount }}</td>
+      <td>{{ product.startDate }}</td>
+      <td>{{ product.finalDate }}</td>
+      <td>
+        <button type="button" class="btn btn-info mr-1" [routerLink]="['/register-products', product.idProduct]"><i class="fa fa-pen"></i></button>
+        <button type="button" class="btn btn-danger mr-1" (click)="deleteProduct(product,  i)"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+ <div *ngIf="" class="alert alert-warning text-center mt-3 animate__animated animate__fadeIn animate__faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p><i class="fa fa-exclamation fa-2x"></i></p>
+  </div>
