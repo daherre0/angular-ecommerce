@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../users/users.service';
 
@@ -9,6 +10,9 @@ import { UsersService } from '../../users/users.service';
 })
 export class HomeComponent implements OnInit {
 
+  user!: any;
+
+
   constructor(public usersService: UsersService) { }
 
   ngOnInit(): void {
@@ -18,6 +22,7 @@ export class HomeComponent implements OnInit {
   getUserLogged(){
   this.usersService.getUser().subscribe(user => {
     console.log(user);
+    this.user = user;
   })
 };
 
