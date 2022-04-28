@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { EcommerceService } from './services/EcommerceService.service';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { RegisterComponent } from './pages/register/register.component';
     HttpClientModule
   ],
   providers: [
-    EcommerceService
+    EcommerceService, CookieService
   ],
   bootstrap: [AppComponent]
 })

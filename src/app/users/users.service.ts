@@ -4,12 +4,13 @@ import { HttpClient } from "@angular/common/http";
 
 // Original: import { Observable } from "rxjs/Observable";
 import { Observable } from "rxjs";
+import { CookieService } from "ngx-cookie-service";
 
 @Injectable({
   providedIn: "root"
 })
 export class UsersService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cookies: CookieService) {}
 
   // Original:  login(user: Any): Observable<any> {
   login(user: any): Observable<any> {
@@ -19,4 +20,16 @@ export class UsersService {
   register(user:any): Observable<any> {
     return this.http.post("https://reqres.in/api/register", user);
   };
+
+  setToken(token: string)
+{
+  this.cookies.set('token', token);
+}
+;
+getToken() {
+  return this.cookies.get('token');
+}
+
+
+
 }
