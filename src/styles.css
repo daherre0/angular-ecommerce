@@ -6,3 +6,21 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=number] { -moz-appearance:textfield; }
+
+
+.container-product {
+  width: 800px;
+}
+
+.info {
+  max-height: 300px;
+}
+
+.image-product {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.descripction {
+
+}

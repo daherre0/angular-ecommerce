@@ -15,6 +15,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CookieService } from 'ngx-cookie-service';
 
+import { TableProductsComponent } from './pages/table-products/table-products.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { BuyProductComponent } from './pages/buy-product/buy-product.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +27,11 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     RegisterProductsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+
+    TableProductsComponent,
+    FilterPipe,
+    BuyProductComponent
   ],
   imports: [
     BrowserModule,

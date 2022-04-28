@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ProductModel } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,27 +11,22 @@ export class EcommerceService {
   constructor( private http: HttpClient ) { }
 
   getProducts() {
-    this.http.get(`${this.URL}apiproducts`)
-      .subscribe(data => {
-        console.log(data)
-      })
+    return this.http.get(`${this.URL}apiproducts`)
   }
 
-  createProducts( product:any ) {
+  getProduct(id:string) {
+    return this.http.get(`${this.URL}apiproducts/${id}`)
+  }
+
+  createProducts( product:ProductModel ) {
     return this.http.post(`${this.URL}apiproducts`, product)
   }
 
-  // createProducts( product:any ) {
-  //   const url = `${this.URL}apiproducts`;
-  //   const params = new HttpParams()
-  //     .set('title', product.title)
-  //     .set('description', product.description)
-  //     .set('image', product.image)
-  //     .set('unitValue', product.price)
-  //     .set('finalDate', product.finalDate)
-  //     .set('startDate', product.startDate)
-  //     .set('discount', product.discount)
+  deleteProduct(id:number) {
+    return this.http.delete(`${this.URL}apiproducts/${id}`)
+  }
 
-  //   return this.http.post(url, { params })
-  // }
+  updateProduct( product: ProductModel ) {
+    return this.http.put(`${this.URL}apiproducts/${product.idProduct}`, product)
+  }
 }

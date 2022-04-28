@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ProductModel } from 'src/app/models/product.model';
 import { EcommerceService } from 'src/app/services/EcommerceService.service';
 import Swal from 'sweetalert2';
@@ -14,14 +15,22 @@ import Swal from 'sweetalert2';
 })
 export class RegisterProductsComponent implements OnInit {
   product: ProductModel = new ProductModel();
+  public incorrectDate = false;
 
-  constructor( private ecommerce: EcommerceService ) {
-    this.ecommerce.getProducts()
-  }
+  constructor( private ecommerce: EcommerceService, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
+    const id: any = this.route.snapshot.paramMap.get('id');
+    if(id !== 'nuevo') {
+      this.ecommerce.getProduct(id)
+        .subscribe((resp:any) => {
+          this.product = resp
+        })
+    }
   }
 
+
+  //save the information in the database
   save( form:NgForm ) {
     if(form.invalid) {
       Object.values(form.controls).forEach(control => {
@@ -30,22 +39,43 @@ export class RegisterProductsComponent implements OnInit {
       return
     }
     this.validateDate(form.value.startDate, form.value.finalDate)
-    console.log(form.value)
-
-    this.ecommerce.createProducts(this.product)
+    if(!this.incorrectDate) {
+      if(this.product.idProduct) {
+        this.ecommerce.updateProduct(this.product)
+        .subscribe( resp => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Tu producto ha sido actualizado satisfactoriamente',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+      } else {
+        this.ecommerce.createProducts(this.product)
       .subscribe(resp => {
-        console.log(resp)
+        Swal.fire({
+          icon: 'success',
+          title: 'Tu producto ha sido guardado satisfactoriamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
+      }
+    }
   }
 
+
+  //validate if the date are correct
   validateDate(fisrtDate: any, secondDate:any) {
     if(fisrtDate > secondDate) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'La fecha final no puede ser menor que la final.',
+        text: 'La fecha final no puede ser menor que la Inicial.',
       })
-      return
+      this.incorrectDate = true;
+    } else {
+      this.incorrectDate = false;
     }
   }
 
