@@ -16,7 +16,7 @@ import { TableProductsComponent } from './pages/table-products/table-products.co
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
-  
+
   { path: "login", component: LoginComponent, pathMatch: "full" },
   { path: "register", component: RegisterComponent, pathMatch: "full" },
 
