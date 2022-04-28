@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   getUserLogged(){
-  this.usersService.getUser().subscribe(user => {
+  this.usersService.getUser(this.usersService.getUserId()).subscribe(user => {
     console.log(user);
     this.user = user;
   })

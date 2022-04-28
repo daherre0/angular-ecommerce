@@ -18,7 +18,7 @@ export class UsersService {
   }
 
   register(user:any): Observable<any> {
-    return this.http.post("https://reqres.in/api/register", user);
+    return this.http.post("http://localhost/donutsLapiliB/web/index.php/apiregisters", user);
   };
 
   setToken(token: string)
@@ -30,10 +30,33 @@ getToken() {
   return this.cookies.get('token');
 }
 
-getUser(){
-  return this.http.get("https://reqres.in/api/users/2");
+getUser(id: string){
+  // Está en veremos
+  return this.http.get(`http://localhost/donutsLapiliB/web/index.php/apiregisters/${id}`);
 }
 
+getUserId(){
+
+  return this.cookies.get('id');
+
+}
+
+setUserId(id:string){
+
+  this.cookies.set('id', id);
+
+}
+getUserRole(){
+
+  return this.cookies.get('role');
+
+}
+
+setUserRole(role:string){
+
+  this.cookies.set('role', role);
+
+}
 getUserLogged(){
   const token = this.getToken();
   // Aquí iría el endpoint para devolver el usuario para un token
@@ -41,6 +64,8 @@ getUserLogged(){
 
 logout(){
   this.cookies.delete("token");
+  this.cookies.delete("id");
+  this.cookies.delete("role");
 
 }
 

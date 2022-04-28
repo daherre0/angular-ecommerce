@@ -3,7 +3,12 @@
 <div class="register">
     <form class="custom-form" method="post">
         <h1>Register</h1>
+        <input type="text" [(ngModel)]="name" name="name" placeholder="First Name" required="required" />
+        <input type="text" [(ngModel)]="lastName" name="lastName" placeholder="Last Name" required="required" />
+        <input type="text" [(ngModel)]="username" name="username" placeholder="User-Name" required="required" />
         <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required="required" />
+        <input type="text" [(ngModel)]="address" name="address" placeholder="Address" required="required" />
+        <input type="text" [(ngModel)]="phone" name="address" placeholder="Phone Number" required="required" />
         <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required="required" />
         <input type="password" [(ngModel)]="confirmPassword" name="password" placeholder="Repeat the password" required="required" />
         <button type="submit" (click)="register()">Register</button>

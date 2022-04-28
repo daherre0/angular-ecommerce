@@ -10,10 +10,18 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  email!: string;
-  password!: string;
   confirmPassword!: string;
   passwordError!: boolean;
+
+  /* User payload */
+  name!: string;
+  lastName!: string;
+  username!: string;
+  email!: string;
+  address!: string;
+  phone!: string;
+  password!: string;
+
 
   constructor(public usersService: UsersService, public router: Router) { }
 
@@ -25,14 +33,22 @@ export class RegisterComponent implements OnInit {
     console.log(this.password);
     if(this.password === this.confirmPassword){
     const user = {
+      name: this.name,
+      lastName: this.lastName,
+      username: this.username,
       email: this.email,
-      password: this.password
-    }
+      address: this.address,
+      phone: this.phone,
+      password: this.password,
+    };
     this.usersService.register(user).subscribe(
       data => {
-        console.log(data);
-        this.usersService.setToken(data.token);
-        this.router.navigateByUrl('/');
+        /* console.log(user)
+        console.log(data); */
+        this.usersService.setToken(data.auth_key);
+        this.usersService.setUserId(data.id);
+        this.usersService.setUserRole(data.role);
+        this.router.navigateByUrl('home');
 
       },
       error => {
