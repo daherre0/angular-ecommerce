@@ -14,7 +14,7 @@ export class UsersService {
 
   // Original:  login(user: Any): Observable<any> {
   login(user: any): Observable<any> {
-    return this.http.post("https://reqres.in/api/login", user);
+    return this.http.get(`http://localhost/donutsLapiliB/web/index.php/apiregisters/login?email=sergiolvargas95@gmail.com&password=123456789`);
   }
 
   register(user:any): Observable<any> {
