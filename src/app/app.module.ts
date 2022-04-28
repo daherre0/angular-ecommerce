@@ -11,6 +11,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { RegisterProductsComponent } from './pages/register-products/register-products.component';
 import { FormsModule } from '@angular/forms';
 import { EcommerceService } from './services/EcommerceService.service';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { CookieService } from 'ngx-cookie-service';
+
 import { TableProductsComponent } from './pages/table-products/table-products.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { BuyProductComponent } from './pages/buy-product/buy-product.component';
@@ -22,6 +26,9 @@ import { BuyProductComponent } from './pages/buy-product/buy-product.component';
     FooterComponent,
     HomeComponent,
     RegisterProductsComponent,
+    LoginComponent,
+    RegisterComponent,
+
     TableProductsComponent,
     FilterPipe,
     BuyProductComponent
@@ -33,7 +40,7 @@ import { BuyProductComponent } from './pages/buy-product/buy-product.component';
     HttpClientModule
   ],
   providers: [
-    EcommerceService
+    EcommerceService, CookieService
   ],
   bootstrap: [AppComponent]
 })
