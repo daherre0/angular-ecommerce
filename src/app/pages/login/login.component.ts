@@ -38,6 +38,9 @@ export class LoginComponent implements OnInit {
       this.usersService.setToken(data.token);
       this.router.navigateByUrl('/')
       console.log(data);
+    },
+    error => {
+      console.log(error.error);
     })
   }
 
