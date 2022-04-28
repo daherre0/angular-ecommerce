@@ -39,7 +39,7 @@
       <td>{{ product.finalDate }}</td>
       <td>
         <button type="button" class="btn btn-info mr-1" [routerLink]="['/register-products', product.idProduct]"><i class="fa fa-pen"></i></button>
-        <button type="button" class="btn btn-danger mr-1" (click)="deleteProduct(product, product.idProduct, i)"><i class="fa fa-trash"></i></button>
+        <button type="button" class="btn btn-danger mr-1" (click)="deleteProduct(product,  i)"><i class="fa fa-trash"></i></button>
       </td>
     </tr>
   </tbody>
