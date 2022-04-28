@@ -14,7 +14,7 @@ export class UsersService {
 
   // Original:  login(user: Any): Observable<any> {
   login(user: any): Observable<any> {
-    return this.http.get(`http://localhost/donutsLapiliB/web/index.php/apiregisters/login?email=sergiolvargas95@gmail.com&password=123456789`);
+    return this.http.get(`http://localhost/donutsLapiliB/web/index.php/apiregisters/login?email=${user.email}&password=${user.password}`);
   }
 
   register(user:any): Observable<any> {
