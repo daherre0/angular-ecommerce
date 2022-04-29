@@ -16,6 +16,7 @@ export class UsersService {
     role: '',
     token: ''
   };
+
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
   // Original:  login(user: Any): Observable<any> {
@@ -84,6 +85,8 @@ isLogged(){
   console.log(this.getToken()=='');
   return islogged;
 }
+
+
 
 
 logout(){
