@@ -18,11 +18,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { TableProductsComponent } from './pages/table-products/table-products.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { BuyProductComponent } from './pages/buy-product/buy-product.component';
-<<<<<<< HEAD
 import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
-=======
->>>>>>> 64cf85540b29a3fd0a7672d75a61ae46aa839943
+
 
 @NgModule({
   declarations: [
@@ -36,13 +34,13 @@ import { AuthGuard } from './auth/auth.guard';
 
     TableProductsComponent,
     FilterPipe,
-<<<<<<< HEAD
+
     BuyProductComponent,
 
-    AuthComponent
-=======
+    AuthComponent,
+
     BuyProductComponent
->>>>>>> 64cf85540b29a3fd0a7672d75a61ae46aa839943
+
   ],
   imports: [
     BrowserModule,
@@ -51,11 +49,9 @@ import { AuthGuard } from './auth/auth.guard';
     HttpClientModule
   ],
   providers: [
-<<<<<<< HEAD
+
     EcommerceService, CookieService, AuthGuard
-=======
-    EcommerceService, CookieService
->>>>>>> 64cf85540b29a3fd0a7672d75a61ae46aa839943
+
   ],
   bootstrap: [AppComponent]
 })
