@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { RegisterProductsComponent } from './pages/register-products/register-products.component';
 import { TableProductsComponent } from './pages/table-products/table-products.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,9 +21,9 @@ const routes: Routes = [
   { path: "login", component: LoginComponent, pathMatch: "full" },
   { path: "register", component: RegisterComponent, pathMatch: "full" },
 
-  { path: 'register-products/:id', component: RegisterProductsComponent },
-  { path: 'products', component: TableProductsComponent },
-  { path: 'buy/:id', component: BuyProductComponent },
+  { path: 'register-products/:id', component: RegisterProductsComponent, canActivate: [AuthGuard] },
+  { path: 'products', component: TableProductsComponent,  canActivate: [AuthGuard] },
+  { path: 'buy/:id', component: BuyProductComponent,  canActivate: [AuthGuard]},
 
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
