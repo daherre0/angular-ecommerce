@@ -24,14 +24,15 @@ export class AuthGuard implements CanActivate {
   ): boolean | Observable<boolean> | Promise<boolean> {
 
 
-    if( !this.userService.isLogged()){
-      console.log()
-      console.log('No estás logueado');
-      this.router.navigateByUrl('/home');
-      return false;
-    }
+    if( this.userService.isLogged() && this.userService.getUserRole() == '1'){
+
     console.log('El usuario está logueado')
     return true;
 
-  }
+  }else{
+  console.log('No estás logueado');
+  this.router.navigateByUrl('/home');
+  return false;
+}
+}
 }
