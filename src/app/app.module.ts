@@ -18,6 +18,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { TableProductsComponent } from './pages/table-products/table-products.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { BuyProductComponent } from './pages/buy-product/buy-product.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,13 @@ import { BuyProductComponent } from './pages/buy-product/buy-product.component';
 
     TableProductsComponent,
     FilterPipe,
+
+    BuyProductComponent,
+
+    AuthComponent,
+
     BuyProductComponent
+
   ],
   imports: [
     BrowserModule,
@@ -40,7 +49,9 @@ import { BuyProductComponent } from './pages/buy-product/buy-product.component';
     HttpClientModule
   ],
   providers: [
-    EcommerceService, CookieService
+
+    EcommerceService, CookieService, AuthGuard
+
   ],
   bootstrap: [AppComponent]
 })

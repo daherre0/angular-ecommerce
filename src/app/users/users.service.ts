@@ -10,6 +10,13 @@ import { CookieService } from "ngx-cookie-service";
   providedIn: "root"
 })
 export class UsersService {
+
+  user = {
+    id:  '',
+    role: '',
+    token: ''
+  };
+
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
   // Original:  login(user: Any): Observable<any> {
@@ -57,10 +64,30 @@ setUserRole(role:string){
   this.cookies.set('role', role);
 
 }
+
+setUser(){
+  this.user.id = this.getUserId();
+  this.user.role = this.getUserRole();
+  this.user.token = this.getToken();
+
+}
+
 getUserLogged(){
-  const token = this.getToken();
+  const user = this.user;
   // Aquí iría el endpoint para devolver el usuario para un token
 }
+
+isLogged(){
+  // this.logout();
+  // return false;
+  const islogged = this.getToken() != '';
+  console.log(islogged);
+  console.log(this.getToken()=='');
+  return islogged;
+}
+
+
+
 
 logout(){
   this.cookies.delete("token");
