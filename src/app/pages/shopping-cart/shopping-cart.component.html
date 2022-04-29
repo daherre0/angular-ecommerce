@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Carrito de Compra</h5>
+    <div *ngFor="let cart of carts" class="card-body row text-center">
+      <div class="col">
+        <h5 class="card-title">{{ cart.title }}</h5>
+        <button class="btn btn-danger" (click)="deleteProduct(cart)">Eliminar</button>
+      </div>
+      <div class="col">
+        <h6>Cantidad:</h6>
+        <h6>{{ cart.quantity }}</h6>
+      </div>
+      <div class="col">
+        <h4>${{ cart.unitValue }}</h4>
+      </div>
+      <hr class="mt-3">
+    </div>
+    <div class="card-body row">
+      <h3 class="card-title col-10 text-end">Total</h3>
+      <h4 class="card-text col">${{ totalProducts }}</h4>
+      <hr>
+    </div>
+    <a (click)="comprar()" class="btn btn-primary m-3">Comprar</a>
+  </div>
+</div>

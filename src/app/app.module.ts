@@ -18,6 +18,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { TableProductsComponent } from './pages/table-products/table-products.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { BuyProductComponent } from './pages/buy-product/buy-product.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BuyProductComponent } from './pages/buy-product/buy-product.component';
 
     TableProductsComponent,
     FilterPipe,
-    BuyProductComponent
+    BuyProductComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

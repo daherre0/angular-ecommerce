@@ -35,39 +35,31 @@ getUser(id: string){
   return this.http.get(`http://localhost/donutsLapiliB/web/index.php/apiregisters/${id}`);
 }
 
-getUserId(){
+  getUserId(){
+    return this.cookies.get('id');
+  }
 
-  return this.cookies.get('id');
+  setUserId(id:string){
+    this.cookies.set('id', id);
+  }
 
-}
+  getUserRole(){
+    return this.cookies.get('role');
+  }
 
-setUserId(id:string){
+  setUserRole(role:string){
+    this.cookies.set('role', role);
+  }
 
-  this.cookies.set('id', id);
+  getUserLogged(){
+    const token = this.getToken();
+    // Aquí iría el endpoint para devolver el usuario para un token
+  }
 
-}
-getUserRole(){
+  logout(){
+    this.cookies.delete("token");
+    this.cookies.delete("id");
+    this.cookies.delete("role");
 
-  return this.cookies.get('role');
-
-}
-
-setUserRole(role:string){
-
-  this.cookies.set('role', role);
-
-}
-getUserLogged(){
-  const token = this.getToken();
-  // Aquí iría el endpoint para devolver el usuario para un token
-}
-
-logout(){
-  this.cookies.delete("token");
-  this.cookies.delete("id");
-  this.cookies.delete("role");
-
-}
-
-
+  }
 }

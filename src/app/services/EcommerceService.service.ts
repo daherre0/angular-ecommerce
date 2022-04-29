@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CartModel } from '../models/cart.model';
 import { ProductModel } from '../models/product.model';
 
 @Injectable({
@@ -7,6 +8,7 @@ import { ProductModel } from '../models/product.model';
 })
 export class EcommerceService {
   private URL = 'http://localhost/donutsLapiliB/web/index.php/'
+  private UrlShopping = 'http://localhost/donutsLapiliB/web/'
 
   constructor( private http: HttpClient ) { }
 
@@ -29,4 +31,21 @@ export class EcommerceService {
   updateProduct( product: ProductModel ) {
     return this.http.put(`${this.URL}apiproducts/${product.idProduct}`, product)
   }
+
+  getShoppingCart(id:string) {
+    return this.http.get(`${this.UrlShopping}apishoppings/watch?idUser=${id}`)
+  }
+
+  postShoppingCart(cart: CartModel) {
+    return this.http.post(`${this.UrlShopping}apishoppings`, cart)
+  }
+
+  deleteShoppingCart(id:string) {
+    return this.http.delete(`${this.UrlShopping}apishoppings/${id}`)
+  }
+
+  deleteShoppingCarts() {
+    return this.http.delete('http://localhost/donutsLapiliB/web/apishoppings/erase?idUser=52')
+  }
 }
+

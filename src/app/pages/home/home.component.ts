@@ -12,12 +12,9 @@ import { EcommerceService } from 'src/app/services/EcommerceService.service';
   ]
 })
 export class HomeComponent implements OnInit {
-
   user!: any;
-
-
-
   products: ProductModel[] = [];
+
   constructor( private ecommerce: EcommerceService, public usersService: UsersService ) {
     this.ecommerce.getProducts()
         .subscribe((resp:any) => {

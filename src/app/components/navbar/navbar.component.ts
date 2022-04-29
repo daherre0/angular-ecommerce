@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from 'src/app/users/users.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  userId:string = ''
+  constructor( private userService: UsersService, public router: Router ) { }
 
   ngOnInit(): void {
+  }
+
+
+  goCartShopping() {
+    this.userId = this.userService.getUserId();
+    this.router.navigate(['/cart', this.userId])
   }
 
 }

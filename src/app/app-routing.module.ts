@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { RegisterProductsComponent } from './pages/register-products/register-products.component';
 import { TableProductsComponent } from './pages/table-products/table-products.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'register-products/:id', component: RegisterProductsComponent },
   { path: 'products', component: TableProductsComponent },
   { path: 'buy/:id', component: BuyProductComponent },
+  { path: 'cart/:id', component: ShoppingCartComponent },
 
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

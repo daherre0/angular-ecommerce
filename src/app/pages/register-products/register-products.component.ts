@@ -51,6 +51,7 @@ export class RegisterProductsComponent implements OnInit {
           })
         })
       } else {
+        console.log(this.product)
         this.ecommerce.createProducts(this.product)
       .subscribe(resp => {
         Swal.fire({
