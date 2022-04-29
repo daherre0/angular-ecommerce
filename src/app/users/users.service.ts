@@ -10,6 +10,13 @@ import { CookieService } from "ngx-cookie-service";
   providedIn: "root"
 })
 export class UsersService {
+
+  user = {
+    id:  '',
+    role: '',
+    token: ''
+  };
+
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
   // Original:  login(user: Any): Observable<any> {
@@ -35,9 +42,20 @@ getUser(id: string){
   return this.http.get(`http://localhost/donutsLapiliB/web/index.php/apiregisters/${id}`);
 }
 
+
   getUserId(){
     return this.cookies.get('id');
   }
+
+isLogged(){
+  // this.logout();
+  // return false;
+  const islogged = this.getToken() != '';
+  console.log(islogged);
+  console.log(this.getToken()=='');
+  return islogged;
+}
+
 
   setUserId(id:string){
     this.cookies.set('id', id);

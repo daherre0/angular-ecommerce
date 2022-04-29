@@ -19,6 +19,9 @@ import { TableProductsComponent } from './pages/table-products/table-products.co
 import { FilterPipe } from './pipes/filter.pipe';
 import { BuyProductComponent } from './pages/buy-product/buy-product.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -32,8 +35,11 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 
     TableProductsComponent,
     FilterPipe,
+
     BuyProductComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    AuthComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,9 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
     HttpClientModule
   ],
   providers: [
-    EcommerceService, CookieService
+
+    EcommerceService, CookieService, AuthGuard
+
   ],
   bootstrap: [AppComponent]
 })
