@@ -1,0 +1,19 @@
+
+
+<h1 class="text-center">Nuestros productos</h1>
+<hr>
+<div class="container row row-cols-1 row-cols-md-3 g-4">
+  <div *ngFor="let product of products" class="col">
+    <div class="card">
+      <img width="200" height="180" [src]="product.image" class="card-img-top" alt="">
+      <div class="card-body">
+        <h5 class="card-title"> {{  product.title }}</h5>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="btn btn-success" [routerLink]="['/buy', product.idProduct]">Comprar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+

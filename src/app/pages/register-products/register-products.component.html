@@ -1,0 +1,98 @@
+<h2>Registrar Productos</h2>
+<hr><br>
+<a class="btn btn-danger" routerLink="/products">Regresar</a>
+<form class="col container mt-3" (ngSubmit)="save(form)" #form="ngForm">
+  <div class="mb-3">
+    <label class="form-label">Titulo</label>
+    <input type="text"
+            class="form-control"
+            name="title"
+            [(ngModel)]="product.title"
+            placeholder="nombre del producto"
+            [class.is-invalid]="title.invalid && title.touched"
+            #title="ngModel"
+            required>
+            <small *ngIf="title.invalid && title.touched" class="form-text text-danger">Este campo es obligatorio</small>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Descripción</label>
+    <input type="text"
+            class="form-control"
+            name="description"
+            [(ngModel)]="product.description"
+            placeholder="descripción del producto"
+            [class.is-invalid]="description.invalid && description.touched"
+            #description="ngModel"
+            required>
+            <small *ngIf="description.invalid && description.touched" class="form-text text-danger">Este campo es obligatorio</small>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Imagen</label>
+    <input type="text"
+            class="form-control"
+            name="image"
+            [(ngModel)]="product.image"
+            placeholder="imagen del producto"
+            [class.is-invalid]="image.invalid && image.touched"
+            #image="ngModel"
+            required>
+            <small *ngIf="image.invalid && image.touched" class="form-text text-danger">Este campo es obligatorio</small>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Precio</label>
+    <input type="number"
+            class="form-control"
+            name="unitValue"
+            [(ngModel)]="product.unitValue"
+            placeholder="precio del producto"
+            [class.is-invalid]="unitValue.invalid && unitValue.touched"
+            #unitValue="ngModel"
+            required>
+            <small *ngIf="unitValue.invalid && unitValue.touched" class="form-text text-danger">Este campo es obligatorio</small>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Descuento</label>
+    <input type="number"
+          class="form-control"
+          name="discount"
+          [(ngModel)]="product.discount"
+          placeholder="descuento del producto"
+          required
+          [class.is-invalid]="discount.invalid && discount.touched"
+          #discount="ngModel"
+          ><small *ngIf="discount.invalid && discount.touched" class="form-text text-danger">Este campo es obligatorio</small>
+  </div>
+
+  <div class="row g-2">
+    <div class="col-md">
+      <div>
+        <label class="form-label">Fecha de Inicio</label>
+        <input type="date"
+              class="form-control"
+              name="startDate"
+              [(ngModel)]="product.startDate"
+              [class.is-invalid]="startDate.invalid && startDate.touched"
+              #startDate="ngModel"
+              required>
+            <small *ngIf="startDate.invalid && startDate.touched" class="form-text text-danger">Este campo es obligatorio</small>
+      </div>
+    </div>
+
+    <div class="col-md">
+      <div>
+        <label class="form-label">Fecha Final</label>
+        <input type="date"
+              class="form-control"
+              name="finalDate"
+              [(ngModel)]="product.finalDate"
+              [class.is-invalid]="finalDate.invalid && finalDate.touched"
+              #finalDate="ngModel"
+            required>
+            <small *ngIf="finalDate.invalid && finalDate.touched" class="form-text text-danger">Este campo es obligatorio</small>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-success mt-3">Guardar</button>
+</form>
