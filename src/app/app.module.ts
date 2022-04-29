@@ -19,8 +19,8 @@ import { TableProductsComponent } from './pages/table-products/table-products.co
 import { FilterPipe } from './pipes/filter.pipe';
 import { BuyProductComponent } from './pages/buy-product/buy-product.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
-import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './auth/auth.guard';
+import { BuyGuard } from './auth/buy.guard';
 
 
 @NgModule({
@@ -32,13 +32,10 @@ import { AuthGuard } from './auth/auth.guard';
     RegisterProductsComponent,
     LoginComponent,
     RegisterComponent,
-
     TableProductsComponent,
     FilterPipe,
-
     BuyProductComponent,
     ShoppingCartComponent,
-    AuthComponent,
 
   ],
   imports: [
@@ -49,7 +46,7 @@ import { AuthGuard } from './auth/auth.guard';
   ],
   providers: [
 
-    EcommerceService, CookieService, AuthGuard
+    EcommerceService, CookieService, AuthGuard, BuyGuard
 
   ],
   bootstrap: [AppComponent]

@@ -10,8 +10,14 @@
       <hr>
       <p class="descripction">{{ product.description }}</p>
       <div class="">
-        <span class="label" >Agrega la cantidad del producto</span>
-        <input type="number" #quantity required min="1" max="10">
+        <span class="label" >Agrega la cantidad del producto: </span>
+          <select #quantity>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
       </div>
       <div class="d-grid gap-2 mt-5">
         <a (click)="addProduct(product.idProduct, quantity.value )" class="btn btn-primary btn-lg">Agregar al carrito</a>

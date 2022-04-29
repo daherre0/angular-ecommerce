@@ -51,8 +51,8 @@ isLogged(){
   // this.logout();
   // return false;
   const islogged = this.getToken() != '';
-  console.log(islogged);
-  console.log(this.getToken()=='');
+  //console.log(islogged);
+  //console.log(this.getToken()=='');
   return islogged;
 }
 
@@ -78,6 +78,9 @@ isLogged(){
     this.cookies.delete("token");
     this.cookies.delete("id");
     this.cookies.delete("role");
+  }
 
+  isAdmin() {
+    return this.getUserRole() == '1'
   }
 }

@@ -8,9 +8,10 @@ import { UsersService } from 'src/app/users/users.service';
   styles: [
   ]
 })
+
 export class NavbarComponent implements OnInit {
-  userId:string = ''
-  constructor( private userService: UsersService, public router: Router ) { }
+  userId!:string;
+  constructor( private userService: UsersService, public router: Router ) {}
 
   ngOnInit(): void {
   }
@@ -21,4 +22,16 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/cart', this.userId])
   }
 
+  isLogIn() {
+    return this.userService.isLogged();
+  }
+
+  logOut() {
+    this.userService.logout();
+    this.router.navigateByUrl('/home')
+  }
+
+  isAdmin() {
+    return this.userService.isAdmin();
+  }
 }

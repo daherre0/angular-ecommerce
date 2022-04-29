@@ -16,6 +16,7 @@ import { TableProductsComponent } from './pages/table-products/table-products.co
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 
 import { AuthGuard } from './auth/auth.guard';
+import { BuyGuard } from './auth/buy.guard';
 
 
 const routes: Routes = [
@@ -24,14 +25,10 @@ const routes: Routes = [
 
   { path: "login", component: LoginComponent, pathMatch: "full" },
   { path: "register", component: RegisterComponent, pathMatch: "full" },
-
-
-  { path: 'cart/:id', component: ShoppingCartComponent },
-
+  { path: 'cart/:id', component: ShoppingCartComponent, canActivate: [BuyGuard] },
   { path: 'register-products/:id', component: RegisterProductsComponent, canActivate: [AuthGuard] },
   { path: 'products', component: TableProductsComponent,  canActivate: [AuthGuard] },
-  { path: 'buy/:id', component: BuyProductComponent,  canActivate: [AuthGuard]},
-
+  { path: 'buy/:id', component: BuyProductComponent,  canActivate: [BuyGuard]},
 
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

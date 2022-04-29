@@ -29,7 +29,6 @@ export class ShoppingCartComponent implements OnInit {
 
   getTotalProducts (carts:any) {
     let total: number = 0;
-    let totalFinal: number = 0;
     const subTotales = carts.map(function(cart:any) {
       return Number(cart.unitValue) * Number(cart.quantity);
     })

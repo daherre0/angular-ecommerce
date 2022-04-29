@@ -34,14 +34,20 @@ export class BuyProductComponent implements OnInit {
   }
 
   addProduct(idProduct:string, quantity:string) {
+
     this.userId = this.userService.getUserId();
+
     if(this.userId != null) {
       this.productCar.idUser = this.userService.getUserId();
       this.productCar.quantity = quantity;
       this.productCar.idProduct = idProduct;
+
       console.log(this.productCar)
-      this.ecommerce.postShoppingCart(this.productCar).subscribe();
+
+      this.ecommerce.postShoppingCart(this.productCar)
+    .subscribe(() => {
       this.router.navigate(['/cart', this.userId]);
+    });
     } else {
       this.router.navigate(['/login'])
     }

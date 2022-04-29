@@ -4,8 +4,17 @@
       <img src="/assets/img/aguita_de_coco_logo.png" width="60" height="50" alt="" >
     </a>
     <form class="d-flex">
-      <button class="navbar-brand w-50" style="border:none; background-color:#f8f9fa" (click)="goCartShopping()">
+      <button *ngIf="!isLogIn()" class="navbar-brand w-50" style="border:none; background-color:#f8f9fa" [routerLink]="['/login']">
+        <img src="/assets/icons/iconsUser.png" width="40" height="40" alt="" >
+      </button>
+      <button *ngIf="isLogIn()" class="navbar-brand w-50" style="border:none; background-color:#f8f9fa" (click)="logOut()">
+        <img src="/assets/icons/logout.png" width="40" height="40" alt="" >
+      </button>
+      <button *ngIf="!isAdmin()" class="navbar-brand w-50" style="border:none; background-color:#f8f9fa" (click)="goCartShopping()">
         <img src="/assets/icons/shopping.png" width="40" height="40" alt="" >
+      </button>
+      <button *ngIf="isAdmin()" class="navbar-brand w-50" style="border:none; background-color:#f8f9fa" [routerLink]="['/products']">
+        <img src="/assets/icons/admin.png" width="40" height="40" alt="" >
       </button>
     </form>
   </div>
