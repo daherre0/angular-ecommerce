@@ -71,7 +71,7 @@ export class ShoppingCartComponent implements OnInit {
       confirmButtonText: 'Sí'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.ecommerceService.deleteShoppingCarts()
+        this.ecommerceService.getNewOrder(this.userId)
           .subscribe(() => {
             this.route.navigate(['/home'])
           });

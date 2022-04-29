@@ -47,5 +47,9 @@ export class EcommerceService {
   deleteShoppingCarts() {
     return this.http.delete('http://localhost/donutsLapiliB/web/apishoppings/erase?idUser=52')
   }
+
+  getNewOrder(id:string) {
+    return this.http.get(`http://localhost/donutsLapiliB/web/apiorders/new-order?idUser=${id}`)
+  }
 }
 
