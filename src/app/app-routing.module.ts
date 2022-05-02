@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'cart/:id', component: ShoppingCartComponent, canActivate: [BuyGuard] },
   { path: 'register-products/:id', component: RegisterProductsComponent, canActivate: [AuthGuard] },
   { path: 'products', component: TableProductsComponent,  canActivate: [AuthGuard] },
-  { path: 'buy/:id', component: BuyProductComponent,  canActivate: [BuyGuard]},
+  { path: 'buy/:id', component: BuyProductComponent },
 
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

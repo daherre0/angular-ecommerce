@@ -5,6 +5,8 @@ import { EcommerceService } from 'src/app/services/EcommerceService.service';
 import { UsersService } from 'src/app/users/users.service';
 import { Router } from '@angular/router';
 import { CartModel } from 'src/app/models/cart.model';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-buy-product',
   templateUrl: './buy-product.component.html',
@@ -37,7 +39,7 @@ export class BuyProductComponent implements OnInit {
 
     this.userId = this.userService.getUserId();
 
-    if(this.userId != null) {
+    if(this.userService.getUserId() !== '') {
       this.productCar.idUser = this.userService.getUserId();
       this.productCar.quantity = quantity;
       this.productCar.idProduct = idProduct;
@@ -49,7 +51,19 @@ export class BuyProductComponent implements OnInit {
       this.router.navigate(['/cart', this.userId]);
     });
     } else {
-      this.router.navigate(['/login'])
+      Swal.fire({
+        title: 'Iniciar sesión',
+        text: "Para agregar productos al carrito debes iniciar sesión",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Iniciar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigateByUrl('/login');
+        }
+      })
     }
   }
 

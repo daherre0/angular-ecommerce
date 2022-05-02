@@ -13,7 +13,7 @@ export class EcommerceService {
   constructor( private http: HttpClient ) { }
 
   getProducts() {
-    return this.http.get(`${this.URL}apiproducts`)
+    return this.http.get(`${this.URL}apiproducts/product`)
   }
 
   getProduct(id:string) {
