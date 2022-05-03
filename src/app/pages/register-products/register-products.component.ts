@@ -30,7 +30,13 @@ export class RegisterProductsComponent implements OnInit {
   }
 
 
-  //save the information in the database
+
+  /**
+   * If the form is invalid, mark all the controls as touched, otherwise, validate the dates and if
+   * they are correct, create or update the product
+   * @param {NgForm} form - NgForm
+   * @returns The product is being returned.
+   */
   save( form:NgForm ) {
     if(form.invalid) {
       Object.values(form.controls).forEach(control => {

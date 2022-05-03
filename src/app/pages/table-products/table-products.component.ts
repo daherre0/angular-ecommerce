@@ -28,6 +28,13 @@ export class TableProductsComponent implements OnInit {
 
   }
 
+  /**
+   * We're using the SweetAlert2 library to create a confirmation dialog box. If the user clicks the
+   * "Yes" button, we'll delete the product from the database. If the user clicks the "No" button,
+   * we'll do nothing
+   * @param {any} product - any - The product that we want to delete.
+   * @param {number} i - The index of the product in the products array.
+   */
   deleteProduct(product:any, i:number) {
     Swal.fire({
       title: '¿Estás seguro?',
